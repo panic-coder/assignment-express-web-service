@@ -15,11 +15,11 @@ mongoose.connect(process.env.DB_URL,  { useNewUrlParser: true, useUnifiedTopolog
 
 // I am alive check
 app.get('/', (req, res) => {
-    res.send('Fruit service is alive');
+    res.send('Inventory service is alive');
 })
 
-// Post a fruit
-app.post('/fruits', (req, res) => {
+// Post a inventory
+app.post('/inventory', (req, res) => {
     console.log(req.body);
     var fruit = new Fruit({
         name: req.body.name,
@@ -36,8 +36,8 @@ app.post('/fruits', (req, res) => {
     })
 })
 
-//Get all fruits
-app.get('/fruits', (req, res) => {
+//Get all inventory
+app.get('/inventory', (req, res) => {
     Fruit.find().then((fruits) => {
         console.log(fruits);
         res.json(fruits);
@@ -46,8 +46,8 @@ app.get('/fruits', (req, res) => {
     })
 })
 
-//Get fruit by name
-app.get('/fruits/:name', (req, res) => {
+//Get inventory by name
+app.get('/inventory/:name', (req, res) => {
     Fruit.find({name: req.params.name}).then((fruit) => {
         if(fruit) {
             res.json(fruit);
@@ -59,8 +59,8 @@ app.get('/fruits/:name', (req, res) => {
     })
 })
 
-//Delete a fruit
-app.put('/fruits', (req, res) => {
+//Delete a inventory
+app.put('/inventory', (req, res) => {
     Fruit.findOneAndUpdate({name: req.body.name}, { quantity: req.body.quantity }).then((fruit) => {
         if(fruit) {
             res.json(fruit);
@@ -72,8 +72,8 @@ app.put('/fruits', (req, res) => {
     })
 })
 
-//Delete a fruit
-app.delete('/fruits/:name', (req, res) => {
+//Delete a inventory
+app.delete('/inventory/:name', (req, res) => {
     Fruit.findOneAndRemove({name: req.params.name}).then((fruit) => {
         if(fruit) {
             res.json(fruit);
