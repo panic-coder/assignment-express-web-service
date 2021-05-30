@@ -59,7 +59,7 @@ app.get('/inventory/:name', (req, res) => {
     })
 })
 
-//Delete a inventory
+//Update a inventory
 app.put('/inventory', (req, res) => {
     Fruit.findOneAndUpdate({name: req.body.name}, { quantity: req.body.quantity }).then((fruit) => {
         if(fruit) {
