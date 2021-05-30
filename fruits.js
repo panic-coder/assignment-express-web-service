@@ -72,7 +72,7 @@ app.put('/inventory', (req, res) => {
     })
 })
 
-//Delete a inventory
+//Delete a inventory with name
 app.delete('/inventory/:name', (req, res) => {
     Fruit.findOneAndRemove({name: req.params.name}).then((fruit) => {
         if(fruit) {
